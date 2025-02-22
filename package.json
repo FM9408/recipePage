@@ -1,0 +1,13 @@
+{
+  "name": "pagina-de-recetas-multirepo",
+  "version": "1.0.0",
+  "description": "carpeta general de la página",
+  "main": "index.js",
+  "workspaces": ["*/"],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run dev -workspaces"
+  },
+  "author": "FM9408",
+  "license": "ISC"
+}
