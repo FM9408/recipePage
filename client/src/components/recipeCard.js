@@ -1,16 +1,7 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert'
+import { Card, CardHeader,CardMedia,CardContent, Typography, Box, Paper, alpha, colors, Rating, IconButton, CardActions } from '@mui/material';
+import { Favorite, Share, MoreVert } from '@mui/icons-material';
 import PropTypes from 'prop-types';
-import { Box, Paper, alpha, colors } from '@mui/material'
 
 
 
@@ -28,13 +19,13 @@ export default function RecipeCard({res}) {
     
     <Card  elevation={CardHover ? 20 : 10} onPointerEnter={() =>setCardHover(true)} onPointerLeave={() => setCardHover(false)}  sx={{ width: {xs: "fit-content", lg:CardHover ? "30em" : "20em"}, height: "fit-content", transition:"all 1s ease-in-out"  }}>
       <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        // action={
+        //   <IconButton aria-label="settings">
+        //     <MoreVert />
+        //   </IconButton>
+        // }
         title={<Typography variant="h4" >{res.name}</Typography>}
-        subheader={res.Op}
+        subheader={<Rating value={res.stars} readOnly precision={0.1}/>}
         sx={{height: {xs: "5em", sm:"7em", md: "8em", lg: "9em"}, margin:"1%", transition:"all .1s ease-in-out" }}
       />
       <CardMedia
@@ -53,14 +44,14 @@ export default function RecipeCard({res}) {
           </Paper>
         </Box>
       </CardContent>
-      <CardActions disableSpacing>
+      {/* <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <Favorite />
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon />
+          <Share />
         </IconButton>
-      </CardActions>
+      </CardActions> */}
     </Card>
    
   );
