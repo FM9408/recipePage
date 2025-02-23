@@ -1,9 +1,8 @@
 import React from "react";
 import {Box, InputBase, styled, alpha} from "@mui/material"
-import { fetchAllRecipes, queryRecipes } from "../redux/slices";
+import { queryRecipes } from "../redux/slices";
 import { useDispatch } from "react-redux";
 import { Search } from "@mui/icons-material"
-import { useParams } from "react-router";
 
 
 const SearchBox = styled('div')(({ theme }) => ({
@@ -57,7 +56,7 @@ const SearchBox = styled('div')(({ theme }) => ({
   export default function SearchingField() {
     const [input, setInput]= React.useState("")
     const dispatch = useDispatch()
-    const params = useParams()
+
     
    function handleChange(e){
        try {

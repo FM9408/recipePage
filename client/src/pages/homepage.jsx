@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Box, Paper, } from "@mui/material";
-import { Outlet } from "react-router";
 import NavBar from "../modules/navbar";
-import { useParams } from "react-router";
+import { useParams, Outlet } from "react-router";
 import SearchingField from "../components/searchField";
 
 

@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import MainRouter from './routes';
 import ThemeProvider from './theme';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchAllRecipes } from "./redux/slices";
 
 
@@ -21,7 +21,7 @@ function App() {
       throw new Error(error)
     }
           
- }, [])
+ }, [dispatch])
   
 
 

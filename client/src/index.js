@@ -9,7 +9,7 @@ import store from './redux/store/store';
 import axios from 'axios';
 
 
-axios.defaults.baseURL = process.env.NODE_ENV === "production" ? process.env.API_URL : "http://localhost:3001"
+axios.defaults.baseURL = "http://localhost:3001"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
