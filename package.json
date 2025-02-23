@@ -6,7 +6,8 @@
   "workspaces": ["*/"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run dev -workspaces"
+    "dev": "npm run dev -workspaces",
+    "start": "npm start -workspaces"
   },
   "author": "FM9408",
   "license": "ISC"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Paper, Stack, Typography, IconButton} from "@mui/material"
+import { Box, Divider, Paper, Stack, Typography} from "@mui/material"
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import GoBackButton from "../components/goBackButton";
