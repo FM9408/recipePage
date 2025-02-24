@@ -56,27 +56,21 @@ const SearchBox = styled('div')(({ theme }) => ({
   export default function SearchingField() {
     const [input, setInput]= React.useState("")
     const dispatch = useDispatch()
+    const [taggedRecipes, setTaggedRecipes] = React.useState("")
      const selectedTag = useSelector((state) => state.selectedTag)
 
     
     function handleChange(e) {
-      
-       try {
-         setInput(e.target.value)
-         dispatch(queryRecipes(e.target.value))
-         
-       } catch (error) {
-        throw new Error(error)
-       }
+      setInput(e.target.value)
+      dispatch(queryRecipes(e.target.value))
     } 
     
-
+    
     React.useEffect(() => {
+      setTaggedRecipes(selectedTag)
+      setInput(taggedRecipes)
       
-        setInput(selectedTag)
-      
-
-    }, [selectedTag])
+    }, [selectedTag, taggedRecipes])
 
     
 
@@ -87,6 +81,7 @@ const SearchBox = styled('div')(({ theme }) => ({
         .addEventListener('reset', () => {
           dispatch(fetchAllRecipes())
           setInput('')
+          setTaggedRecipes("")
           dispatch(selectTag(""))
         })
       
@@ -106,7 +101,8 @@ const SearchBox = styled('div')(({ theme }) => ({
                         value={input}
                         onChange={(e) => handleChange(e)}
                         placeholder='Search…'
-                        inputProps={{ 'aria-label': 'search' }}
+              inputProps={{ 'aria-label': 'search' }}
+              
                     />
 
             {

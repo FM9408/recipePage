@@ -11,7 +11,7 @@ import RecipesPagination from "../components/recipesPagination";
 
 
 export default function RecipiesGrid() {
-    const [recipes, setRecpies] = React.useState([])
+    const [recipes, setRecipes] = React.useState([])
     const [loading, setLoading] = React.useState(true)
    
     const memoryData = useSelector(state => state.recipes)
@@ -21,29 +21,36 @@ export default function RecipiesGrid() {
    
   
 
-
     
 
-   
+    if (document.getElementById("recipesGrid")) {
+        document.getElementById("recipesGrid").addEventListener("load", () => {
+            setRecipes(memoryData)
+             setTimeout(() => {
+                 setLoading(false)
+             }, 1000) 
+        })
+    }
    
 
 
     React.useEffect(() => {
-        if (!recipes.length || recipes.length !== memoryData.length) {
-            setRecpies(memoryData)
-        } else {
-            setTimeout(() => {
-                setLoading(false)
-            }, 1000)
-            setPaginated(recipes.slice(0, Math.ceil(recipes.length / 5)))
+        if (document.getElementById("recipesGrid")) {
+            document.getElementById("recipesGrid").dispatchEvent(new Event("load"))
         }
+        if (memoryData.length !== recipes.length) {
+            setRecipes(memoryData)
+        }
+           memoryData.length < 6 ? setPaginated(recipes): setPaginated(recipes.slice(0, Math.ceil(recipes.length / 5)))
+        
+   
     }, [recipes, memoryData])
 
    
     
 
     return (
-        <Box>
+        <Box id="recipesGrid">
             {loading === false ? (
                 <Stack>
                     <Box>

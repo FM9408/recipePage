@@ -30,7 +30,7 @@ export default function RecipeTags({tags}) {
   }
   
 
-  function tagColor(tagName) {
+  function tagColor( tagName ) {
     switch (tagName) {
       case "Vegetarian":
          return "success"
@@ -62,8 +62,8 @@ export default function RecipeTags({tags}) {
           <ListItem key={tag.id}>
             <Chip
               clickable={true}
-              onClick={() => searchByTag(tag.name) }
-              color={`${() => tagColor(tag.name)}`} 
+              onClick={() => searchByTag(tag.name)}
+              color={tagColor(tag.name)} 
               //icon={icon}
               label={tag.name}
             />

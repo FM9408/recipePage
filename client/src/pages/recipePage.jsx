@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Paper, Stack, Typography} from "@mui/material"
+import { Box, Divider, Paper, Rating, Stack, Typography} from "@mui/material"
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import GoBackButton from "../components/goBackButton";
@@ -18,6 +18,7 @@ import {ReactComponent as Groups} from "../assets/icons/Groups.svg"
 export default function RecipePage(){
     const [recipe, setRecipe] = React.useState({
     })
+    const [stars, setStars] = React.useState(0)
     const params = useParams()
     const recipes = useSelector(state => state.recipes)
     const [recipeId, setRecipeId]=React.useState("")
@@ -33,6 +34,7 @@ export default function RecipePage(){
             recipes.forEach(res => {
                 if(res.id === recipeId){
                     setRecipe(res)
+                    setStars(res.stars)
                 }
             })
         }
@@ -54,10 +56,17 @@ export default function RecipePage(){
                             {recipe.name}
                         </Typography>
                     </Box>
+                    <Box sx={{width:"100%"}}>
+                        <Stack direction={"row"} sx={{width:"100%", alignItems:"center", justifyContent:"space-around"}}>
+                              <Box>
+                        <Rating value={stars} readOnly precision={0.1} size="large" />
+                    </Box>
                     <Box>
                         {
                             Array.isArray(recipe.tags) ? <RecipeTags tags={Array.from(recipe.tags)}/> : <></>
                       }
+                    </Box>
+                        </Stack>
                     </Box>
                       <Box>
                       <Stack direction={{xs:"column",lg:"row"}} >
@@ -177,69 +186,3 @@ export default function RecipePage(){
 }
 
 
-
-//  {/* Grid general */}
-//  <Grid2 container direction={"column"} justifyContent={"space-around"}>
-//  {/* Grid Del Titulo */}
-//  <Grid2 borderBottom={"1px solid black"} marginBottom={"3%"}>
-//      <Box>
-//          <Typography variant="h1" sx={{fontFamily:"Dancing Script"}}>
-//              {recipe.name}
-//          </Typography>
-//      </Box>
-//  </Grid2>
-//  {/*Grid del cuerpo */}
-//  <Grid2>
-//      {/* Grid de la Imagen */}
-//      <Grid2 container direction={{xs:"column", md:"row"}}>
-//          <Grid2 sx={{overflow:"hidden", width: {xs:"100%", lg:"25%"}, backgroundColor:"blue", height: {xs:"5em", lg:"40em"},position:"relative",borderRadius:"2%"}}>
-//              <Box sx={{position:"absolute", top:{xs:"-5em",lg:"0"}, width:{xs:"100%",lg:"40em"}}} >
-//                  <img src={recipe.imageUrl} alt={recipe.name}  style={{scale:"1.2"}} />
-//              </Box>
-//          </Grid2>
-//          {/* Grid de la seccion ingredientes e informacion*/}
-//         <Grid2 container direction={{xs:"column",lg:"row"}} sx={{width:"100%"}}>
-//          <Grid2 sx={{justifyItems:"center", height:"fit-content" }}>
-//              {/*Grid y stack de los ingredientes */}
-//                  <Grid2 container direction={"column"} justifyItems={"center"} sx={{width:{xs:"100%"}}}>
-//                      <Grid2 sx={{width:{xs:"100%"}}}>
-//                              <Paper elevation={5} sx={{width:{xs:"100%"}}}>
-//                                  <Typography sx={{fontFamily: "Rouge Script", fontSize:{xs:"3em"}}}>Ingredients:</Typography>
-//                              </Paper>
-//                      </Grid2>
-//                      <Divider />
-//                      <Grid2 sx={{backgroundColor:"bisque", height:"89%"}} >
-//                          <Paper sx={{width:"80%%", padding:"1%", height:"95%", margin:"3%", borderRadius:"2%"}}>
-//                              <Stack >
-//                                  {
-//                                      recipe.ingredients && recipe.ingredients.length > 0 ? (
-                                         
-//                                              recipe.ingredients.map((ingredient,i) => {
-//                                                  return (
-//                                                      <Grid2 key={ingredient} container direction={"row"} sx={{}}>
-//                                                      <IngredientCheckbox ingredient={ingredient}/>
-//                                                      </Grid2>
-//                                                  )
-//                                              })
-                                         
-//                                      ) : (
-//                                          <Typography variant="subtitule2">Loading...</Typography> 
-//                                      )
-//                                  }
-//                              </Stack>
-//                          </Paper>
-//                      </Grid2>  
-//                  </Grid2>
-//          </Grid2>
-//          {/* informacion*/}
-//          <Grid2 sx={{width:{xs:"100%", lg:"70%"}}} justifyItems={"center"}>
-//             <Paper elevation={5} sx={{width:{xs:"100%"}}}>
-//              <Stack>
-//                      <Typography sx={{fontFamily: "Rouge Script", fontSize:{xs:"3em"}}}>Nutritional information:</Typography>
-//                  </Stack>
-//             </Paper>
-//          </Grid2>
-//         </Grid2>
-//      </Grid2>
-//  </Grid2>
-// </Grid2>

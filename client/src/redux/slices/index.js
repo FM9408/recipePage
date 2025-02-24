@@ -59,12 +59,22 @@ const mainSlice = createSlice({
       recipes: [],
       tags: [],
       selectedTag: "",
-        showingRecipe: {},
-        loadingInfo: "idle"
+      showingRecipe: {},
+      loadingInfo: "idle"
     },
     reducers: {
-      selectTag(state, action){
-        state.selectedTag = action.payload    
+      selectTag(state, action) {
+        let taggedRecipes = []
+        state.recipes.forEach(recipe => {
+          recipe.tags.forEach(tag => {
+            if (tag.name === action.payload) {
+              taggedRecipes.push(recipe)
+            }
+          })
+        })
+    
+        state.selectedTag = action.payload   
+        state.recipes = taggedRecipes
       }
     },
     extraReducers: (builder) => {
