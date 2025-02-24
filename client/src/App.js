@@ -3,7 +3,7 @@ import React from 'react';
 import MainRouter from './routes';
 import ThemeProvider from './theme';
 import { useDispatch } from 'react-redux';
-import { fetchAllRecipes } from "./redux/slices";
+import { fetchAllRecipes, queryAllTags } from "./redux/slices";
 
 
 
@@ -15,7 +15,8 @@ function App() {
  React.useEffect(() => {
     try {
       
-          dispatch(fetchAllRecipes())
+      dispatch(fetchAllRecipes())
+      dispatch(queryAllTags())
       
     } catch (error) {
       throw new Error(error)

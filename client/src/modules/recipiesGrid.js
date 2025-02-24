@@ -15,6 +15,8 @@ export default function RecipiesGrid() {
     const [loading, setLoading] = React.useState(true)
    
     const memoryData = useSelector(state => state.recipes)
+   
+    
     const [paginated, setPaginated] = React.useState([])
    
   
@@ -30,10 +32,10 @@ export default function RecipiesGrid() {
         if (!recipes.length || recipes.length !== memoryData.length) {
             setRecpies(memoryData)
         } else {
-            setTimeout(()=> {
+            setTimeout(() => {
                 setLoading(false)
-            }, 1000) 
-          setPaginated(recipes.slice(0, Math.ceil(recipes.length/5)))
+            }, 1000)
+            setPaginated(recipes.slice(0, Math.ceil(recipes.length / 5)))
         }
     }, [recipes, memoryData])
 

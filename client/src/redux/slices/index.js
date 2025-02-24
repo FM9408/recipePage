@@ -58,11 +58,14 @@ const mainSlice = createSlice({
     initialState: {
       recipes: [],
       tags: [],
+      selectedTag: "",
         showingRecipe: {},
         loadingInfo: "idle"
     },
     reducers: {
-        
+      selectTag(state, action){
+        state.selectedTag = action.payload    
+      }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchAllRecipes.fulfilled, (state, action) => {
@@ -83,5 +86,5 @@ const mainSlice = createSlice({
 
 })
 
-
+export const {selectTag} = mainSlice.actions
 export default mainSlice.reducer
