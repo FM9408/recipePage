@@ -99,8 +99,18 @@ async function queryRecipesByTagName(req, res) {
 }
 
 
+async function queryAllTags(req, res) {
+    try {
+        const allTags = await Tag.findAll()
+        res.status(200).send(allTags)
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
 module.exports = {
     getAllRecipes,
     queryRecipesSearch,
-    queryRecipesByTagName
+    queryRecipesByTagName,
+    queryAllTags
 }
