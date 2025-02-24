@@ -8,13 +8,11 @@ import { fetchAllRecipes, queryAllTags } from "./redux/slices";
 
 
 function App() {
-  
+ 
   const dispatch = useDispatch()
-
-
- React.useEffect(() => {
+  
+  React.useEffect(() => {
     try {
-      
       dispatch(fetchAllRecipes())
       dispatch(queryAllTags())
       
