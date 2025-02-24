@@ -1,7 +1,7 @@
 import React from "react";
 import {Box, InputBase, styled, alpha, Stack, IconButton} from "@mui/material"
-import { queryRecipes, fetchAllRecipes } from "../redux/slices";
-import { useDispatch } from "react-redux";
+import { queryRecipes, fetchAllRecipes,selectTag } from "../redux/slices";
+import { useDispatch, useSelector } from "react-redux";
 import { Search, Cancel} from "@mui/icons-material"
 
 
@@ -56,6 +56,7 @@ const SearchBox = styled('div')(({ theme }) => ({
   export default function SearchingField() {
     const [input, setInput]= React.useState("")
     const dispatch = useDispatch()
+     const selectedTag = useSelector((state) => state.selectedTag)
 
     
     function handleChange(e) {
@@ -69,6 +70,16 @@ const SearchBox = styled('div')(({ theme }) => ({
        }
     } 
     
+
+    React.useEffect(() => {
+      
+        setInput(selectedTag)
+      
+
+    }, [selectedTag])
+
+    
+
     if (document
       .getElementsByClassName('inputBase')[0]) {
       document
@@ -76,7 +87,9 @@ const SearchBox = styled('div')(({ theme }) => ({
         .addEventListener('reset', () => {
           dispatch(fetchAllRecipes())
           setInput('')
+          dispatch(selectTag(""))
         })
+      
      
     }
     return (

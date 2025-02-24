@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled, Box, Chip } from '@mui/material';
 import {array}from "prop-types"
 import { useNavigate} from 'react-router';
-import { queryRecipesbyTag } from '../redux/slices';
+import { queryRecipesbyTag, selectTag } from '../redux/slices';
 import { useDispatch } from 'react-redux';
 
 RecipeTags.propTypes = {
@@ -21,13 +21,9 @@ export default function RecipeTags({tags}) {
   function searchByTag(tagName) {
    try {
      dispatch(queryRecipesbyTag(tagName))
+     dispatch(selectTag(tagName))
      navigate(`/recipes`)
-     setTimeout(() => {
-       document
-           .getElementsByClassName('inputBase')[0]
-         .dispatchEvent(new Event('tagSelected', {
-         }))
-     },1000)
+     
    } catch (error) {
     throw new Error(error);
    }
