@@ -1,6 +1,9 @@
 import React from 'react';
-import { Card, CardHeader,CardMedia,CardContent, Typography, Box, Paper, alpha, colors, Rating, IconButton, CardActions } from '@mui/material';
-import { Favorite, Share, MoreVert } from '@mui/icons-material';
+import {
+  Card, CardHeader, CardMedia, CardContent, Typography, Box, Paper, alpha, colors, Rating,
+  //IconButton, CardActions
+} from '@mui/material';
+// import { Favorite, Share, MoreVert } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 
 

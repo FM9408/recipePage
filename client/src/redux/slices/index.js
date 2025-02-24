@@ -40,12 +40,24 @@ export const queryRecipesbyTag = createAsyncThunk(
     }
   },
 )
+export const queryAllTags = createAsyncThunk(
+    'recipes/fetchingAllTags',
+  async (tagName, thunkAPI) => {
+    try {
+      const response = await axios.get(`/recipes/getTags`)
+    return response.data
+    } catch (error) {
+        throw new Error(error)
+    }
+  },
+)
 
 
 const mainSlice = createSlice({
     name:"mainSlice",
     initialState: {
-        recipes: [],
+      recipes: [],
+      tags: [],
         showingRecipe: {},
         loadingInfo: "idle"
     },
@@ -61,6 +73,9 @@ const mainSlice = createSlice({
         })
       builder.addCase(queryRecipesbyTag.fulfilled, (state, action) => {
           state.recipes = action.payload
+        })
+      builder.addCase(queryAllTags.fulfilled, (state, action) => {
+          state.tags = action.payload
         })
     } 
 

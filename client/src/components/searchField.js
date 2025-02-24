@@ -1,8 +1,8 @@
 import React from "react";
-import {Box, InputBase, styled, alpha} from "@mui/material"
-import { queryRecipes } from "../redux/slices";
+import {Box, InputBase, styled, alpha, Stack, IconButton} from "@mui/material"
+import { queryRecipes, fetchAllRecipes } from "../redux/slices";
 import { useDispatch } from "react-redux";
-import { Search } from "@mui/icons-material"
+import { Search, Cancel} from "@mui/icons-material"
 
 
 const SearchBox = styled('div')(({ theme }) => ({
@@ -58,7 +58,8 @@ const SearchBox = styled('div')(({ theme }) => ({
     const dispatch = useDispatch()
 
     
-   function handleChange(e){
+    function handleChange(e) {
+      
        try {
          setInput(e.target.value)
          dispatch(queryRecipes(e.target.value))
@@ -67,21 +68,47 @@ const SearchBox = styled('div')(({ theme }) => ({
         throw new Error(error)
        }
     } 
-
-
-    return(
-        <Box sx={{width:"100%"}}>
-           <SearchBox>
-                        <SearchIconWrapper>
-                            <Search />
-                        </SearchIconWrapper>
-                        <StyledInputBase
+    
+    if (document
+      .getElementsByClassName('inputBase')[0]) {
+      document
+        .getElementsByClassName('inputBase')[0]
+        .addEventListener('reset', () => {
+          dispatch(fetchAllRecipes())
+          setInput('')
+        })
+     
+    }
+    return (
+        <Box  sx={{ width: '100%' }}>
+            <SearchBox>
+                <Stack direction='row'>
+                    <SearchIconWrapper>
+                        <Search />
+                    </SearchIconWrapper>
+            <StyledInputBase
+              className="inputBase"
+              
+                        onLoad={() => dispatch(fetchAllRecipes())}
                         value={input}
                         onChange={(e) => handleChange(e)}
-                        placeholder="Search…"
+                        placeholder='Search…'
                         inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </SearchBox>
+                    />
+
+            {
+              input !== "" ? <IconButton
+                        onClick={() =>
+                            document.getElementsByClassName("inputBase")[0].dispatchEvent(new Event("reset"))
+                        }
+                    >
+                        <Cancel />
+                    </IconButton> : <></>
+                    }
+                </Stack>
+            </SearchBox>
         </Box>
     )
-  }
+}
+  
+  
