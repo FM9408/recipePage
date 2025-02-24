@@ -1,9 +1,10 @@
 import React from "react";
-import { Grid2, Box, Typography, Stack, Pagination } from "@mui/material";
+import { Grid2, Box, Typography, Stack} from "@mui/material";
 import RecipeCard from "../components/recipeCard";
 import { NavLink } from "react-router";
 import {useSelector} from "react-redux"
-import {LocalDiningOutlined} from "@mui/icons-material"
+import { LocalDiningOutlined } from "@mui/icons-material"
+import RecipesPagination from "../components/recipesPagination";
 
 
  
@@ -12,17 +13,11 @@ import {LocalDiningOutlined} from "@mui/icons-material"
 export default function RecipiesGrid() {
     const [recipes, setRecpies] = React.useState([])
     const [loading, setLoading] = React.useState(true)
-    const totalPages = Math.ceil(recipes.length / 6)
-    const [page, setPage] = React.useState(1)
+   
     const memoryData = useSelector(state => state.recipes)
     const [paginated, setPaginated] = React.useState([])
    
   
-    function handlePaginationChange(e, value) {
-        setPage(value)
-        setPaginated(recipes.slice(6*(value-1), (6*value)))
-       
-    }
 
 
     
@@ -88,18 +83,8 @@ export default function RecipiesGrid() {
                             </Typography>
                         )}
                     </Box>
-                    <Box sx={{margin:"1%", width:"100%", justifyItems:"center"}}>
-                        <Pagination
-                                        page={page}
-                                        count={totalPages}
-                                        showFirstButton
-                                        showLastButton
-                                        hideNextButton={page === totalPages}
-                                        hidePrevButton={page === 1}
-                                        onChange={(e, value) => {handlePaginationChange(e, value)}}
-                                        
-                                    />
-                    </Box>
+                    <RecipesPagination setPaginated={setPaginated} recipes={recipes} />
+                    
                 </Stack>
             ) : (
                 <Box
