@@ -80,10 +80,7 @@ export default function TopRatedGallery() {
             setTopRatedRecipes(recipes.filter((recipe) => recipe.stars > 4.7))
         }
        
-             setTimeout(function () {
-                 handleIndexGoForward()
-                 
-             }, 9000)
+            
          
        
     }, [topRatedRecipes, recipes, index])

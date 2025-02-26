@@ -53,6 +53,18 @@ export const queryAllTags = createAsyncThunk(
 )
 
 
+// export const getRelatedRecipes = createAsyncThunk(
+//   "recipes/getRelatedRecipes",
+//   async (tags, thunkAPI) => {
+//     try {
+//       const response = await axios.get()
+//     } catch (error) {
+      
+//     }
+//   }
+// )
+
+
 const mainSlice = createSlice({
     name:"mainSlice",
     initialState: {
