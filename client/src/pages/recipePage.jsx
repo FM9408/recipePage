@@ -6,7 +6,7 @@ import GoBackButton from "../components/goBackButton";
 import RecipeTags from "../components/recipieTag";
 import IngredientCheckbox from "../components/ingredientCheckbox";
 import {ReactComponent as  Stockpot} from "../assets/icons/Stockpot.svg" 
-import {ReactComponent as Alone} from "../assets/icons/Alone.svg"
+import { ReactComponent as Alone } from "../assets/icons/Alone.svg"
 import {ReactComponent as Couple}  from "../assets/icons/Couple.svg"
 import {SentimentNeutralOutlined, SentimentSatisfied, MoodBad, QueryBuilderOutlined} from "@mui/icons-material"
 import {ReactComponent as Groups} from "../assets/icons/Groups.svg"
@@ -178,7 +178,6 @@ export default function RecipePage(){
                             </Box>
                         </Stack>
                       </Box>
-                    
                </Stack>
             </Paper>
         </Box>

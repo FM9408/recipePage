@@ -12,7 +12,7 @@ export default function GoBackButton() {
   
     return (
         <Box>
-            <IconButton onClick={() => navigate("/recipes") }>
+            <IconButton onClick={() => navigate(window.history.back()) }>
                 <ArrowBack />
             </IconButton>
         </Box>
