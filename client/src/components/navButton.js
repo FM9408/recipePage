@@ -29,17 +29,62 @@ export default function NavButton({ button }) {
     }, [matchPath, button.href, document.location.pathname])
 
     return (
-        <Button disabled={matchPath} onClick={() => navigate(`${button.href}`)} sx={{ width: "fit-content" }} title={button.title} variant="text" color={theme.palette.getContrastText(theme.palette.primary.main)} onPointerEnter={ matchPath ? null :()=> setIsHover(true)} onPointerLeave={matchPath? null :() => setIsHover(false)}>
-            <Box sx={{width: "fit-content", overflow: "hidden",  }}>
-               <Box sx={{ width: "fit-content",  display:"flex", alignContent: "center", justifyItems:"center"}}>
-                    <Box sx={{width: isHover ? `${50-button.title.length*3}%` : "100%", overflow:"hidden",transition:"width 1s ease-in-out" }}>
-                        {button.icon }
+        <Button
+            disabled={matchPath}
+            onClick={() => navigate(`${button.href}`)}
+            sx={{ width: 'fit-content' }}
+            title={button.title}
+            variant='text'
+            color={
+                matchPath
+                    ? theme.palette.secondary.dark
+                    : theme.palette.getContrastText(theme.palette.primary.main)
+            }
+            onPointerEnter={matchPath ? null : () => setIsHover(true)}
+            onPointerLeave={matchPath ? null : () => setIsHover(false)}
+        >
+            <Box sx={{ width: 'fit-content', overflow: 'hidden' }}>
+                <Box
+                    sx={{
+                        width: 'fit-content',
+                        display: 'flex',
+                        alignContent: 'center',
+                        justifyItems: 'center'
+                    }}
+                >
+                    <Box
+                        sx={{
+                            width: isHover
+                                ? `${50 - button.title.length * 3}%`
+                                : '100%',
+                            overflow: 'hidden',
+                            transition: 'all 1s ease-in-out'
+                        }}
+                    >
+                        {button.icon}
                     </Box>
-                    <Box sx={{width:  isHover ? `${50+(button.title.length*3)}%` : "0%", overflow:"hidden", transition:"width 1s ease-in-out",}} >
-                        <Typography  color="white" variant="button">{button.title}</Typography> 
+                    <Box
+                        sx={{
+                            width: isHover
+                                ? `${50 + button.title.length * 3}%`
+                                : '0%',
+                            overflow: 'hidden',
+                            transition: 'all 1s ease-in-out'
+                        }}
+                    >
+                        <Typography
+                            color={
+                                matchPath
+                                    ? theme.palette.secondary.dark
+                                    : theme.palette.primary.contrastText
+                            }
+                            sx={{ transition: 'all 1s ease-in-out' }}
+                            variant='button'
+                        >
+                            {button.title}
+                        </Typography>
                     </Box>
-               </Box>
-           
+                </Box>
             </Box>
         </Button>
     )

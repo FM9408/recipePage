@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Box, Paper, Stack, useTheme } from "@mui/material";
+import { Container, Box, Stack, useTheme } from "@mui/material";
 import NavBar from "../modules/navbar";
 import { useParams, Outlet, useLocation } from "react-router";
 import TopRatedGallery from "../modules/TopRatedGallery";

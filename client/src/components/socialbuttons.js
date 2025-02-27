@@ -21,7 +21,7 @@ export default function SocialButtons() {
                 footerConfig.social.map((social) => {
                     return (
                         <Link to={social.href} key={social.title}>
-                            <IconButton sx={{color: theme.palette.primary.contrastText }} title={social.title}>
+                            <IconButton sx={{color: theme.palette.primary.contrastText, "&:hover": {color: theme.palette.secondary.dark}, transition:"all .2s ease-in-out" }} title={social.title}>
                                 {social.icon}
                             </IconButton>
                         </Link>

@@ -23,5 +23,15 @@ export const footerConfig = {
             icon: <Instagram />,
             href: "https://www.instagram.com"
         }
+    ],
+    legal: [
+        {
+            title: "Terminos y condiciones",
+            href:"/legal/termsAndConditions"
+        },
+        {
+            title: "Politica de Privacidad",
+            href:"/legal/privacyPolicy"
+        }
     ]
 }
