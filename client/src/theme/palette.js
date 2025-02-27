@@ -35,12 +35,12 @@ const PRIMARY= {
 } 
 
 const SECONDARY = {
-  lighter: '#D6E4FF',
-  light: '#84A9FF',
-  main: '#3366FF',
-  dark: '#1939B7',
-  darker: '#091A7A',
-  contrastText: '#fff',
+  lighter: colors.orange[100],
+  light: colors.orange[200],
+  main: colors.orange[300],
+  dark: colors.orange[400],
+  darker: colors.orange[500],
+  contrastText: colors.cyan,
 };
 
 const INFO = {
