@@ -24,7 +24,7 @@ export default function Hompage() {
                     <NavBar />
                     <Box sx={{ margin: "1%" }}>
                         {
-                           params.id || location.pathname === "/" ? <></> : <SearchingField />
+                           params.id || location.pathname !== "/recipes" ? <></> : <SearchingField />
                         }
                     </Box>
                 </Box>

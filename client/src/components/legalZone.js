@@ -38,7 +38,7 @@ export default function LegalAcordieon() {
             ) : (
                 <Box>
                     <Accordion
-                        sx={{ backgroundColor: !expanded ? theme.palette.primary.darker : theme.palette.primary.main , transition:"all .5s ease-in-out" }}
+                        sx={{ backgroundColor: !expanded ? theme.palette.primary.main : theme.palette.primary.darker , transition:"all .5s ease-in-out" }}
                     >
                         <AccordionSummary
                             aria-controls='legalPanel-content'
