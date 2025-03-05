@@ -1,15 +1,25 @@
-import { Box, Container, FormControl, FormHelperText, Input, Paper, Typography, Stack } from "@mui/material"
+import { Box, Container, FormControl, FormHelperText, Input, Paper, Typography, Stack, Divider, IconButton, useMediaQuery, useTheme } from "@mui/material"
 import AddAnIngredientButton from "../components/addAnIngredientButton"
+import AddAnInstrucctionModule from "../modules/AddAnInstrucctionModule"
+import AddAnIgredientModule from "../modules/AddAnIngredientModule"
 import React from "react"
-
+import {Add} from "@mui/icons-material"
+import json2mq from "json2mq"
 
 
 export default function AddARecipePage() {
+    const theme = useTheme()
+    const match = useMediaQuery(
+        json2mq({
+            maxWidth: theme.breakpoints.values.md
+        })
+    )
     const [input, setInput] = React.useState({
         title: "",
         ingts: []
     })
      let [ingredients, setIngredients] = React.useState([])
+    let [instructions, setInstructions] = React.useState([])
 
     function handleInputChange(e) {
         setInput({
@@ -18,6 +28,11 @@ export default function AddARecipePage() {
         })
     }
 
+    React.useEffect(() => {
+        
+    }, [instructions,
+        setInstructions
+    ])
 
 
 
@@ -40,23 +55,16 @@ export default function AddARecipePage() {
                     <FormHelperText></FormHelperText>
                 </FormControl>
                 </Box>
-                <Stack direction={"row"} sx={{justifyContent:"space-between"}}>
-                    <Paper sx={{margin: "1%", padding:"1%"}}>
-                         <Box >
-                    <Stack direction={"column"} gap={2}>
-                        <Box>
-                            <Typography variant="h4" fontFamily="Dancing Script">Ingredientes:</Typography>
-                        </Box>
-                        <Box >
-                            <AddAnIngredientButton ingredients={ingredients} setIngredients={setIngredients} />
-                        </Box>
+                    <Box>
+                         <Stack direction={match? "column":"row"} sx={{justifyContent:"space-between"}}>
+                        <AddAnIgredientModule ingredients={ingredients} setIngredients={setIngredients}/>
+                
+                        <AddAnInstrucctionModule match={match} instructions={instructions} setInstructions={setInstructions } /> 
                     </Stack>
                     </Box>
-                    </Paper>
-                    <Box justifyContent={"center"}>
-                        hola
+                    <Box>
+
                     </Box>
-               </Stack>
             </Stack>
             </Paper>
         </Container>
