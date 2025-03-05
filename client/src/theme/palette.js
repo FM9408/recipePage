@@ -40,7 +40,7 @@ const SECONDARY = {
   main: colors.orange[300],
   dark: colors.orange[400],
   darker: colors.orange[500],
-  contrastText: colors.cyan,
+  contrastText: colors.deepOrange[300],
 };
 
 const INFO = {

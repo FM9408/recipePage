@@ -1,6 +1,7 @@
 import { Box, Stack } from "@mui/material"
 import React from "react"
 import SocialButtons from "../components/socialbuttons"
+import LegalAcordieon from "../components/legalZone"
 
 
 
@@ -26,7 +27,7 @@ export default function FooterNav() {
                     <SocialButtons />
                 </Box>
                 <Box >
-                    
+                    <LegalAcordieon />
                 </Box>
                 <Box>
                     hola

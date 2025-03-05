@@ -1,5 +1,5 @@
 {
-  "name": "pagina-de-recetas-client",
+  "name": "el-secreto-dulce-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +15,7 @@
     "axios": "^1.7.9",
     "dotenv": "^10.0.0",
     "express": "^4.21.2",
+    "json2mq": "^0.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.0.0",
     "react-redux": "^9.2.0",
