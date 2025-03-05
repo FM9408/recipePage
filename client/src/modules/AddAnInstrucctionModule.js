@@ -1,6 +1,6 @@
 import React from "react"
 import { Paper, Stack, Box, IconButton, Divider, Typography } from "@mui/material"
-import { Add, Close, Edit } from "@mui/icons-material"
+import { Add, Close } from "@mui/icons-material"
 import AddANewInstrucction from "../components/addANewIntrucction"
 import { bool, array, func } from "prop-types"
 

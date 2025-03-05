@@ -1,9 +1,7 @@
-import { Box, Container, FormControl, FormHelperText, Input, Paper, Typography, Stack, Divider, IconButton, useMediaQuery, useTheme } from "@mui/material"
-import AddAnIngredientButton from "../components/addAnIngredientButton"
+import { Box, Container, FormControl, FormHelperText, Input, Paper, Typography, Stack, useMediaQuery, useTheme } from "@mui/material"
 import AddAnInstrucctionModule from "../modules/AddAnInstrucctionModule"
 import AddAnIgredientModule from "../modules/AddAnIngredientModule"
 import React from "react"
-import {Add} from "@mui/icons-material"
 import json2mq from "json2mq"
 
 
@@ -36,13 +34,13 @@ export default function AddARecipePage() {
 
 
 
-    function handleSubmitRecipe(e) {
-        e.preventDefult()
-        setInput({
-            ...input,
-            ingts: ingredients
-        })
-    }
+    // function handleSubmitRecipe(e) {
+    //     e.preventDefult()
+    //     setInput({
+    //         ...input,
+    //         ingts: ingredients
+    //     })
+    // }
 
     return (
         <Container>
